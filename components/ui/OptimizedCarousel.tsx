@@ -25,8 +25,6 @@ export function OptimizedCarousel({
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
-
   // Precargar imágenes cercanas
   useEffect(() => {
     if (typeof window === "undefined" || !images || images.length === 0) return
@@ -37,9 +35,9 @@ export function OptimizedCarousel({
 
     preloadImages.forEach((index) => {
       const img = new window.Image()
-      img.src = `${basePath}${images[index]}`
+      img.src = images[index]
     })
-  }, [currentIndex, images, basePath])
+  }, [currentIndex, images.length])
 
   // Autoplay optimizado
   useEffect(() => {
@@ -89,7 +87,7 @@ export function OptimizedCarousel({
 
           {/* Imagen actual */}
           <Image
-            src={`${basePath}${images[currentIndex]}`}
+            src={images[currentIndex]}
             alt={`${alt} ${currentIndex + 1}`}
             fill
             className={`object-cover transition-opacity duration-300 ${
@@ -168,7 +166,7 @@ export function OptimizedCarousel({
                 }`}
               >
                 <Image
-                  src={`${basePath}${img}`}
+                  src={img}
                   alt={`Miniatura ${index + 1}`}
                   width={64}
                   height={48}
@@ -200,7 +198,7 @@ export function OptimizedCarousel({
 
             <div className="relative h-full w-full">
               <Image
-                src={`${basePath}${images[currentIndex]}`}
+                src={images[currentIndex]}
                 alt={`${alt} ${currentIndex + 1}`}
                 fill
                 className="object-contain"

@@ -3,13 +3,13 @@
 import { OptimizedCarousel } from "@/components/ui/OptimizedCarousel"
 
 export const gnaImages = [
-  "/assets/images/gna/gna-login.png",
-  "/assets/images/gna/gna-register.png",
-  "/assets/images/gna/gna-home.png",
-  "/assets/images/gna/gna-numbers.png",
-  "/assets/images/gna/gna.png",
-  "/assets/images/gna/gna-audit.png",
-  "/assets/images/gna/gna-roles.png",
+  "assets/images/gna/gna-login.png",
+  "assets/images/gna/gna-register.png",
+  "assets/images/gna/gna-home.png",
+  "assets/images/gna/gna-numbers.png",
+  "assets/images/gna/gna.png",
+  "assets/images/gna/gna-audit.png",
+  "assets/images/gna/gna-roles.png",
 ]
 
 export function GnaGallery() {
