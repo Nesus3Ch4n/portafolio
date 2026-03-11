@@ -1,22 +1,7 @@
 import type { Metadata } from 'next'
-import { Work_Sans, JetBrains_Mono } from 'next/font/google'  // Cambiamos Inter por Work_Sans
 import { Analytics } from '@vercel/analytics/next'
 import { MouseProvider } from '@/components/MouseContext'
 import './globals.css'
-
-// Configuración de Work Sans (fuente principal)
-const workSans = Work_Sans({ 
-  subsets: ["latin"],
-  display: 'swap',
-  variable: '--font-work-sans',  // Variable para Work Sans
-  weight: ['300', '400', '500', '600', '700'], // Pesos disponibles
-});
-
-// JetBrains Mono para código (se mantiene igual)
-const jetbrainsMono = JetBrains_Mono({ 
-  subsets: ["latin"],
-  variable: '--font-jetbrains-mono'
-});
 
 export const metadata: Metadata = {
   title: 'Jesus Cordoba | Ingeniero en Sistemas',
@@ -49,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${workSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <MouseProvider>
           {children}
           <Analytics />

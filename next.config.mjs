@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === 'production'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
@@ -6,10 +8,15 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  output: 'export',  // ← AGREGAR: Habilita exportación estática
-  basePath: '/portafolio', // ← AGREGAR: Nombre de tu repositorio
-  assetPrefix: '/portafolio/', // ← AGREGAR: Prefijo para assets
-  trailingSlash: true, // ← AGREGAR: Opcional, mejora rutas
+  // Configuración extra solo para producción (por ejemplo GitHub Pages)
+  ...(isProd
+    ? {
+        output: 'export',
+        basePath: '/portafolio',
+        assetPrefix: '/portafolio/',
+        trailingSlash: true,
+      }
+    : {}),
 }
 
 export default nextConfig
