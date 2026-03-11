@@ -6,59 +6,60 @@ import { ExternalLink, Github, ArrowRight } from "lucide-react"
 
 const projects = [
   {
-    title: "Sistema de Gestion Empresarial",
+    id: 1,
+    title: "Sistema de Generación de Números Aleatorios",
     description:
-      "Plataforma integral para la gestion de recursos empresariales incluyendo inventario, ventas, y reportes en tiempo real.",
-    technologies: ["React", "Node.js", "PostgreSQL", "Docker"],
-    github: "https://github.com",
-    demo: "https://demo.com",
+      "Sistema que automatiza la generación de números para sorteos televisivos (Chontico y Lotería del Valle), reduciendo el tiempo de preparación de 45 minutos a solo 5 minutos. Incluye panel administrativo, sistema de seguridad, gestión de permisos de acceso y autenticación JWT.",
+    technologies: ["Angular", "TypeScript", "FastAPI", "Python", "Oracle DB", "Docker", "JWT"],
+    github: "https://github.com/Nesus3Ch4n/proyecto-gna-frontend",
     featured: true,
   },
   {
-    title: "API de Procesamiento de Pagos",
+    id: 2,
+    title: "Sistema de Paz y Salvo - Portal PAU",
     description:
-      "Microservicio de alta disponibilidad para procesamiento de transacciones financieras con integracion a multiples pasarelas.",
-    technologies: ["Go", "gRPC", "Redis", "Kubernetes"],
-    github: "https://github.com",
-    demo: null,
+      "Sistema para validación de paz y salvo de empleados que finalizan su relación laboral en Gane SuperGiros. Implementa autenticación JWT y sistema de notificaciones por email. Desarrollado en 3 meses con resultados eficientes y robustos.",
+    technologies: ["Angular", "TypeScript", "FastAPI", "Python", "Oracle DB", "Docker", "JWT"],
+    github: "https://github.com/Nesus3Ch4n/paz-y-salvo-Remaked",
     featured: true,
   },
   {
-    title: "Dashboard de Analytics",
+    id: 3,
+    title: "Actualización de Datos de Empleados",
     description:
-      "Panel de visualizacion de datos con graficos interactivos y reportes automatizados para toma de decisiones.",
-    technologies: ["Next.js", "D3.js", "Python", "AWS"],
-    github: "https://github.com",
-    demo: "https://demo.com",
+      "Módulo para la plataforma Portal PAU de Gane SuperGiros que permite reescribir y gestionar datos de empleados. Incluye sistema de auditoría, administración de accesos, generación de reportes Excel, paginación y autenticación JWT. Optimizado para alta concurrencia de peticiones en tiempo real.",
+    technologies: ["Angular", "TypeScript", "FastAPI", "Python", "Oracle DB", "Docker", "JWT"],
+    github: "https://github.com/Nesus3Ch4n/actualizacion-datos-frontend",
     featured: true,
   },
   {
-    title: "App de Productividad",
+    id: 6,
+    title: "Radicación de Incapacidades Laborales",
     description:
-      "Aplicacion movil multiplataforma para gestion de tareas y seguimiento de habitos con sincronizacion en la nube.",
-    technologies: ["React Native", "Firebase", "TypeScript"],
-    github: "https://github.com",
-    demo: "https://demo.com",
+      "Aplicación web para digitalizar y agilizar el proceso de radicación de incapacidades laborales, eliminando procesos manuales y en papel. Proyecto de grado para Talento Tech.",
+    technologies: ["Node.js", "Express", "HTML", "CSS", "Bootstrap", "MySQL", "APIs REST"],
+    github: "https://github.com/JuanPython1/Module_Example_Incapacidades_SIPAC",
     featured: false,
   },
   {
-    title: "Plataforma E-Learning",
+    id: 4,
+    title: "SIPAC - Módulo de Movilidades Académicas",
     description:
-      "Sistema de educacion en linea con soporte para video streaming, evaluaciones y certificaciones.",
-    technologies: ["Vue.js", "Django", "MongoDB", "AWS S3"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    featured: false,
-  },
-  {
-    title: "Bot de Automatizacion",
-    description:
-      "Sistema de automatizacion de procesos empresariales con integracion a multiples plataformas y APIs.",
-    technologies: ["Python", "FastAPI", "RabbitMQ", "Docker"],
-    github: "https://github.com",
+      "Módulo para el sistema SIPAC de la Universidad Santiago de Cali que automatiza la gestión de movilidades entrantes y salientes de profesores y estudiantes para intercambios académicos.",
+    technologies: ["Laravel", "Node.js", "MySQL", "Oracle SQL", "MVC"],
     demo: null,
     featured: false,
   },
+  {
+    id: 5,
+    title: "Sistema de Gestión de Inventario - Biblioteca",
+    description:
+      "Sistema de optimización de inventario para la biblioteca de la Universidad Santiago de Cali, mejorando el seguimiento y control de recursos bibliográficos.",
+    technologies: ["Laravel", "Node.js", "MySQL", "Oracle SQL"],
+    demo: null,
+    featured: false,
+  },
+  
 ]
 
 export function Projects() {
@@ -186,8 +187,8 @@ export function Projects() {
 
         <div className="mt-12 text-center">
           <Button asChild variant="outline" size="lg">
-            <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
-              Ver mas proyectos
+            <Link href="https://github.com/Nesus3Ch4n" target="_blank" rel="noopener noreferrer">
+              Hechale un vistazo a mi Github
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

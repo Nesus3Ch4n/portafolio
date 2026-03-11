@@ -1,40 +1,44 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Work_Sans, JetBrains_Mono } from 'next/font/google'  // Cambiamos Inter por Work_Sans
 import { Analytics } from '@vercel/analytics/next'
+import { MouseProvider } from '@/components/MouseContext'
 import './globals.css'
 
-const inter = Inter({ 
+// Configuración de Work Sans (fuente principal)
+const workSans = Work_Sans({ 
   subsets: ["latin"],
-  variable: '--font-inter'
+  display: 'swap',
+  variable: '--font-work-sans',  // Variable para Work Sans
+  weight: ['300', '400', '500', '600', '700'], // Pesos disponibles
 });
 
+// JetBrains Mono para código (se mantiene igual)
 const jetbrainsMono = JetBrains_Mono({ 
   subsets: ["latin"],
   variable: '--font-jetbrains-mono'
 });
 
 export const metadata: Metadata = {
-  title: 'Carlos Martinez | Ingeniero en Sistemas',
-  description: 'Portafolio profesional de Carlos Martinez - Ingeniero en Sistemas especializado en desarrollo de software, arquitectura de sistemas y soluciones tecnologicas.',
+  title: 'Jesus Cordoba | Ingeniero en Sistemas',
+  description: 'Portafolio profesional de Jesus Cordoba - Ingeniero en Sistemas especializado en desarrollo de software, arquitectura de sistemas y soluciones tecnologicas.',
   keywords: ['ingeniero en sistemas', 'desarrollador', 'software', 'portafolio', 'tecnologia'],
-  authors: [{ name: 'Carlos Martinez' }],
-  generator: 'v0.app',
+  authors: [{ name: 'Jesus Cordoba' }],
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/sprout-l.png',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/sprout.png',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: '/sprout-l.png',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/sprout.png',
   },
 }
 
@@ -45,9 +49,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-        {children}
-        <Analytics />
+      <body className={`${workSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <MouseProvider>
+          {children}
+          <Analytics />
+        </MouseProvider>
       </body>
     </html>
   )

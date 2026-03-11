@@ -14,42 +14,32 @@ const skillCategories = [
   {
     title: "Lenguajes de Programacion",
     icon: Code2,
-    skills: ["JavaScript", "TypeScript", "Python", "Java", "C#", "Go"],
+    skills: ["JavaScript", "TypeScript", "Python", "PHP", "Rust"],
   },
   {
     title: "Frontend",
     icon: Smartphone,
-    skills: ["React", "Next.js", "Vue.js", "Angular", "Tailwind CSS", "HTML/CSS"],
+    skills: ["Laravel", "Next.js", "Vue.js", "Angular", "Tailwind CSS"],
   },
   {
     title: "Backend",
     icon: Server,
-    skills: ["Node.js", "Express", "Django", "Spring Boot", ".NET Core", "FastAPI"],
+    skills: ["Node.js con Express", "Spring Boot", "FastAPI"],
   },
   {
     title: "Bases de Datos",
     icon: Database,
-    skills: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Elasticsearch", "DynamoDB"],
+    skills: ["PostgreSQL", "MongoDB", "MySQL"],
   },
   {
     title: "Cloud & DevOps",
     icon: Cloud,
-    skills: ["AWS", "Azure", "Docker", "Kubernetes", "CI/CD", "Terraform"],
-  },
-  {
-    title: "Control de Versiones",
-    icon: GitBranch,
-    skills: ["Git", "GitHub", "GitLab", "Bitbucket", "Git Flow", "Code Review"],
-  },
-  {
-    title: "Seguridad",
-    icon: Shield,
-    skills: ["OAuth 2.0", "JWT", "OWASP", "SSL/TLS", "Penetration Testing", "Encryption"],
+    skills: ["Oracle", "AWS", "Docker", "Kubernetes", "Terraform", "GitHub", "GitLab"],
   },
   {
     title: "Arquitectura",
     icon: Cpu,
-    skills: ["Microservicios", "REST APIs", "GraphQL", "Event-Driven", "DDD", "Clean Architecture"],
+    skills: ["Microservicios", "REST APIs", "GraphQL", "DDD", "Scream Architecture", "MVC"],
   },
 ]
 
@@ -66,7 +56,7 @@ export function Skills() {
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
             Dominio de tecnologias modernas y herramientas que permiten crear 
-            soluciones robustas, escalables y mantenibles.
+            soluciones robustas, escalables, seguras con autenticacion y mantenibles.
           </p>
         </div>
 

@@ -6,41 +6,15 @@ import { Calendar, Clock, ArrowRight } from "lucide-react"
 
 const blogPosts = [
   {
-    title: "Arquitectura de Microservicios: Lecciones Aprendidas",
+    title: "Muy pronto",
     excerpt:
-      "Despues de implementar microservicios en multiples proyectos, comparto las lecciones mas importantes sobre cuando y como adoptar esta arquitectura.",
+      "Lorem...",
     date: "15 Feb 2024",
-    readTime: "8 min",
+    readTime: "2 min",
     category: "Arquitectura",
-    slug: "arquitectura-microservicios-lecciones",
-  },
-  {
-    title: "Optimizacion de Rendimiento en React: Guia Completa",
-    excerpt:
-      "Tecnicas avanzadas para mejorar el rendimiento de aplicaciones React, desde memo hasta virtualizacion de listas.",
-    date: "28 Ene 2024",
-    readTime: "12 min",
-    category: "Frontend",
-    slug: "optimizacion-rendimiento-react",
-  },
-  {
-    title: "CI/CD con GitHub Actions: De Cero a Produccion",
-    excerpt:
-      "Tutorial paso a paso para configurar pipelines de integracion y despliegue continuo usando GitHub Actions.",
-    date: "10 Ene 2024",
-    readTime: "15 min",
-    category: "DevOps",
-    slug: "cicd-github-actions-tutorial",
-  },
-  {
-    title: "Patrones de Diseno en TypeScript Moderno",
-    excerpt:
-      "Explorando como implementar patrones de diseno clasicos aprovechando las caracteristicas modernas de TypeScript.",
-    date: "20 Dic 2023",
-    readTime: "10 min",
-    category: "Desarrollo",
-    slug: "patrones-diseno-typescript",
-  },
+    slug: "#",
+  }
+  
 ]
 
 export function Blog() {
@@ -105,7 +79,7 @@ export function Blog() {
         <div className="mt-12 text-center">
           <Button asChild variant="outline" size="lg">
             <Link href="/blog">
-              Ver todos los articulos
+              En construccion
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

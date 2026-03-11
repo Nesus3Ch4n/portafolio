@@ -4,53 +4,82 @@ import { GraduationCap, Award, Calendar } from "lucide-react"
 
 const education = [
   {
-    degree: "Maestria en Ingenieria de Software",
-    institution: "Universidad Tecnologica Nacional",
-    period: "2020 - 2022",
-    description:
-      "Especializacion en arquitectura de sistemas distribuidos y metodologias agiles de desarrollo.",
+    degree: "Ingeniería en Sistemas",
+    institution: "Universidad Santiago de Cali",
+    period: "Feb 2020 - Dic 2025",
+    description: "Formación integral en ingeniería de software con énfasis en arquitectura de sistemas empresariales y desarrollo full stack. Durante la carrera, implementé proyectos académicos aplicando principios SOLID, MVC y POO, destacando en la optimización de procesos administrativos mediante soluciones tecnológicas escalables. Desarrollé habilidades en análisis de sistemas, modelado de datos y gestión de proyectos de software.",
+    achievements: [
+      "Implementé sistemas de información para la DGI (Dirección General de Investigación) automatizando procesos administrativos universitarios",
+      "Diseñé e implementé el módulo de movilidades académicas para el sistema SIPAC utilizando arquitectura MVC",
+      "Desarrollé sistemas de gestión de inventario y portafolios personales aplicando patrones de diseño y buenas prácticas"
+    ],
+    skills: ["Estructuras de datos", "Bases de datos", "Lenguajes de programación", "Laravel", "Gestión de proyectos", "Arquitectura MVC", "Principios SOLID", "POO"]
   },
   {
-    degree: "Ingenieria en Sistemas Computacionales",
-    institution: "Instituto Politecnico Nacional",
-    period: "2013 - 2017",
-    description:
-      "Formacion integral en desarrollo de software, redes y administracion de sistemas.",
+    degree: "Desarrollador Web Full Stack Avanzado",
+    institution: "Talento Tech",
+    period: "Nov 2024 - Ene 2025",
+    description: "Programación intensiva enfocada en el desarrollo de aplicaciones web completas con arquitecturas modernas. Aprendí a diseñar e implementar sistemas escalables utilizando Node.js, Express y bases de datos relacionales, aplicando principios de diseño de APIs RESTful y buenas prácticas de desarrollo backend.",
+    achievements: [
+      "Desarrollé un sistema de radicación de incapacidades laborales como proyecto de grado, digitalizando procesos administrativos manuales",
+      "Implementé consumo de APIs y manejo de JSON para integración de servicios",
+      "Diseñé la arquitectura backend utilizando Node.js con Express siguiendo el patrón MVC"
+    ],
+    skills: ["JavaScript", "Node.js", "Express", "Desarrollo de API REST", "Arquitectura backend", "JSON", "Bootstrap"]
   },
+  {
+    degree: "Técnico Desarrollador de Software",
+    institution: "Servicio Nacional de Aprendizaje (SENA)",
+    period: "Feb 2017 - Dic 2019",
+    description: "Formación técnica enfocada en fundamentos de desarrollo de software, bases de datos relacionales y programación web. Adquirí los cimientos para comprender la arquitectura de sistemas, el modelado de datos y el ciclo de vida del desarrollo de software.",
+    achievements: [
+      "Desarrollé un proyecto CRUD de tienda virtual de comidas rápidas implementando arquitectura de tres capas (presentación, lógica, datos)",
+      "Obtuve el puesto #2 en la Institución Educativa Técnico Industrial Donald Rodrigo Tafur con proyecto de especialista en sistemas",
+      "Implementé interfaces web con HTML, CSS y JavaScript integradas con backend en PHP y MySQL"
+    ],
+    skills: ["Gestión de proyectos web", "Base de datos relacional", "Diseño web", "Desarrollo web", "Metodologías de desarrollo", "PHP", "MySQL", "Arquitectura de 3 capas"]
+  }
 ]
 
 const certifications = [
   {
-    name: "AWS Solutions Architect Professional",
-    issuer: "Amazon Web Services",
+    name: "Diplomado en Derechos Humanos, Etnoeducacion y Catedra de estudios Afrocolombianos",
+    issuer: "Universidad de las Americas y el Caribe Internacional - REMAFRO",
+    year: "2026",
+    type: "Diplomado"
+  },
+  {
+    name: "Coach para docentes",
+    issuer: "Organización Iberoamericana de Coaching",
     year: "2024",
+    type: "Certificación"
   },
   {
-    name: "Google Cloud Professional Developer",
-    issuer: "Google Cloud",
-    year: "2023",
+    name: "Inglés B2",
+    issuer: "Grupo Interactivas",
+    year: "2024",
+    type: "Idioma"
   },
   {
-    name: "Kubernetes Administrator (CKA)",
-    issuer: "CNCF",
-    year: "2023",
+    name: "Photoshop Avanzado",
+    issuer: "Grupo Interactivas",
+    year: "2024",
+    type: "Curso"
   },
   {
-    name: "Scrum Master Certified (SMC)",
-    issuer: "Scrum Alliance",
-    year: "2022",
-  },
-  {
-    name: "MongoDB Developer Associate",
-    issuer: "MongoDB",
-    year: "2021",
-  },
-  {
-    name: "Oracle Java SE 11 Developer",
-    issuer: "Oracle",
-    year: "2020",
-  },
+    name: "Microsoft Office 365",
+    issuer: "Grupo Interactivas",
+    year: "2024",
+    type: "Curso"
+  }
 ]
+
+const typeTagClasses = `
+  px-2 py-0.5 bg-primary/5 text-primary text-[10px] font-medium 
+  rounded-full border border-primary/20
+  inline-block
+`
+const uniqueTypes = [...new Set(certifications.map(cert => cert.type))]
 
 export function Education() {
   return (
@@ -122,6 +151,10 @@ export function Education() {
                     <p className="text-muted-foreground text-xs">
                       {cert.issuer}
                     </p>
+                    <div className="flex flex-wrap gap-1 pt-1">
+                       <p className={typeTagClasses}>{cert.type}</p>
+                    </div>
+                    
                   </CardContent>
                 </Card>
               ))}

@@ -10,28 +10,22 @@ import { Mail, MapPin, Linkedin, Github, Send } from "lucide-react"
 
 const contactInfo = [
   {
-    icon: Mail,
-    label: "Email",
-    value: "carlos@ejemplo.com",
-    href: "mailto:carlos@ejemplo.com",
-  },
-  {
     icon: MapPin,
     label: "Ubicacion",
-    value: "Ciudad de Mexico, Mexico",
+    value: "Colombia, Cali",
     href: null,
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "linkedin.com/in/carlosmartinez",
-    href: "https://linkedin.com",
+    value: "Jesus Felipe Cordoba Echandia",
+    href: "https://www.linkedin.com/in/jesus-felipe-cordoba-echandia-a5160723b/",
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "github.com/carlosmartinez",
-    href: "https://github.com",
+    value: "Nesus3Ch4n",
+    href: "https://github.com/Nesus3Ch4n",
   },
 ]
 
@@ -69,21 +63,21 @@ export function Contact() {
             simplemente para conversar sobre tecnologia. No dudes en contactarme.
           </p>
         </div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-xl font-bold text-foreground mb-6">
+  
+        <div className="flex justify-center">
+          <div className="w-full lg:w-2/3 xl:w-1/2">
+            <h3 className="text-xl font-bold text-foreground mb-6 text-center lg:text-left">
               Informacion de Contacto
             </h3>
             <div className="space-y-4">
               {contactInfo.map((item) => (
-                <Card key={item.label} className="bg-card border-border">
+                <Card key={item.label} className="bg-card border-border hover:border-primary/50 transition-colors">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-4">
-                      <div className="p-2 bg-primary/10 rounded-lg">
+                      <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
                         <item.icon className="h-5 w-5 text-primary" />
                       </div>
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <p className="text-sm text-muted-foreground">
                           {item.label}
                         </p>
@@ -92,12 +86,12 @@ export function Contact() {
                             href={item.href}
                             target={item.href.startsWith("http") ? "_blank" : undefined}
                             rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="text-foreground hover:text-primary transition-colors font-medium"
+                            className="text-foreground hover:text-primary transition-colors font-medium break-words"
                           >
                             {item.value}
                           </a>
                         ) : (
-                          <p className="text-foreground font-medium">
+                          <p className="text-foreground font-medium break-words">
                             {item.value}
                           </p>
                         )}
@@ -107,82 +101,6 @@ export function Contact() {
                 </Card>
               ))}
             </div>
-          </div>
-
-          <div>
-            <Card className="bg-card border-border">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-6">
-                  Enviar Mensaje
-                </h3>
-                <form onSubmit={handleSubmit}>
-                  <FieldGroup>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <Field>
-                        <FieldLabel htmlFor="name">Nombre</FieldLabel>
-                        <Input
-                          id="name"
-                          placeholder="Tu nombre"
-                          value={formState.name}
-                          onChange={(e) =>
-                            setFormState({ ...formState, name: e.target.value })
-                          }
-                          required
-                        />
-                      </Field>
-                      <Field>
-                        <FieldLabel htmlFor="email">Email</FieldLabel>
-                        <Input
-                          id="email"
-                          type="email"
-                          placeholder="tu@email.com"
-                          value={formState.email}
-                          onChange={(e) =>
-                            setFormState({ ...formState, email: e.target.value })
-                          }
-                          required
-                        />
-                      </Field>
-                    </div>
-                    <Field>
-                      <FieldLabel htmlFor="subject">Asunto</FieldLabel>
-                      <Input
-                        id="subject"
-                        placeholder="Asunto del mensaje"
-                        value={formState.subject}
-                        onChange={(e) =>
-                          setFormState({ ...formState, subject: e.target.value })
-                        }
-                        required
-                      />
-                    </Field>
-                    <Field>
-                      <FieldLabel htmlFor="message">Mensaje</FieldLabel>
-                      <Textarea
-                        id="message"
-                        placeholder="Escribe tu mensaje aqui..."
-                        rows={5}
-                        value={formState.message}
-                        onChange={(e) =>
-                          setFormState({ ...formState, message: e.target.value })
-                        }
-                        required
-                      />
-                    </Field>
-                    <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                      {isSubmitting ? (
-                        "Enviando..."
-                      ) : (
-                        <>
-                          Enviar Mensaje
-                          <Send className="ml-2 h-4 w-4" />
-                        </>
-                      )}
-                    </Button>
-                  </FieldGroup>
-                </form>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
