@@ -1,5 +1,6 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
+import { GnaGallery } from "@/components/gna-gallery"
 import { About } from "@/components/about"
 import { Skills } from "@/components/skills"
 import { Projects } from "@/components/projects"
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <About />
       <Skills />
+      <GnaGallery />
       <Projects />
       <Education />
       <Blog />
