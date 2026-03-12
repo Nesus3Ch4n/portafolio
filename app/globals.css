@@ -1,4 +1,11 @@
 @import 'tailwindcss';
+
+/* Rutas explícitas para que el build en Vercel incluya todas las clases */
+@source "../components/**/*.tsx";
+@source "../components/**/*.ts";
+@source "./**/*.tsx";
+@source "./**/*.ts";
+
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 

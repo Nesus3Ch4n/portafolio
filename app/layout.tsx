@@ -34,7 +34,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className="font-sans antialiased">
+      <body
+        className="font-sans antialiased bg-background text-foreground"
+        style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}
+      >
         <MouseProvider>
           {children}
           <Analytics />
