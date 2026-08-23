@@ -4,9 +4,15 @@ import { GraduationCap, Award, Calendar } from "lucide-react"
 
 const education = [
   {
+    degree: "Maestría en Gerencia de Proyectos",
+    institution: "Corporación Universitaria Iberoamericana",
+    period: "Ago 2026 - Presente",
+    description: "Programa de posgrado en curso orientado a la dirección estratégica de proyectos, abarcando metodologías de gestión, planificación de alcances, cronogramas, costos, riesgos y liderazgo de equipos multidisciplinarios, con aplicación directa al desarrollo de software y la transformación digital."
+  },
+  {
     degree: "Ingeniería en Sistemas",
     institution: "Universidad Santiago de Cali",
-    period: "Feb 2020 - Dic 2025",
+    period: "Feb 2020 - Abr 2026",
     description: "Formación integral en ingeniería de software con énfasis en arquitectura de sistemas empresariales y desarrollo full stack. Durante la carrera, implementé proyectos académicos aplicando principios SOLID, MVC y POO, destacando en la optimización de procesos administrativos mediante soluciones tecnológicas escalables. Desarrollé habilidades en análisis de sistemas, modelado de datos y gestión de proyectos de software.",
     achievements: [
       "Implementé sistemas de información para la DGI (Dirección General de Investigación) automatizando procesos administrativos universitarios",

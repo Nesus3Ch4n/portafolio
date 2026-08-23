@@ -19,7 +19,7 @@ export function MouseGlow({
   children 
 }: MouseGlowProps) {
   const glowRef = useRef<HTMLDivElement>(null)
-  const { registerGlowElement, mousePosition } = useMouse()
+  const { registerGlowElement } = useMouse()
 
   const sizeClasses = {
     sm: 'w-16 h-16',
@@ -34,19 +34,18 @@ export function MouseGlow({
   }
 
   useEffect(() => {
-    if (glowRef.current) {
-      registerGlowElement(glowRef.current)
-    }
-  }, [registerGlowElement])
+    const element = glowRef.current
+    if (!element) return
+    return registerGlowElement(element, { intensity })
+  }, [registerGlowElement, intensity])
 
   return (
     <div
       ref={glowRef}
-      className={`absolute rounded-full blur-2xl pointer-events-none transition-opacity duration-300 ease-out
+      className={`absolute rounded-full blur-2xl pointer-events-none transition-opacity duration-300 ease-out opacity-20
                  ${sizeClasses[size]} ${colorClasses[color]} ${className}`}
       style={{
-        opacity: mousePosition.isHovering ? 0.6 * intensity : 0.2,
-        willChange: 'transform, opacity'
+        willChange: "transform, opacity",
       }}
     />
   )

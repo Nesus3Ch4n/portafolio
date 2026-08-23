@@ -25,6 +25,11 @@ export function OptimizedCarousel({
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
+  // Mostrar spinner mientras carga cada nueva imagen
+  useEffect(() => {
+    setIsLoading(true)
+  }, [currentIndex])
+
   // Precargar imágenes cercanas
   useEffect(() => {
     if (typeof window === "undefined" || !images || images.length === 0) return
@@ -96,7 +101,7 @@ export function OptimizedCarousel({
             sizes="(max-width: 768px) 100vw, 800px"
             quality={85}
             priority={currentIndex === 0}
-            onLoadingComplete={() => setIsLoading(false)}
+            onLoad={() => setIsLoading(false)}
           />
 
           {/* Overlay gradiente */}

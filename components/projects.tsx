@@ -4,9 +4,27 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, ArrowRight } from "lucide-react"
 
-const projects = [
+interface Project {
+  id: number
+  title: string
+  description: string
+  technologies: string[]
+  github?: string
+  demo?: string | null
+  featured: boolean
+}
+
+const projects: Project[] = [
   {
     id: 1,
+    title: "Sistema de Gestión para Taller de Motos",
+    description:
+      "Producto independiente desarrollado bajo mi marca CordiaSolve: software integral de gestión para talleres de motocicletas con órdenes de servicio, inventario de repuestos, vehículos y clientes, facturación, finanzas con cierre mensual, reportes y auditoría completa. Autenticación con sesiones y bcrypt, acceso multi-PC en red local y distribución como ejecutable de escritorio.",
+    technologies: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "Jinja2", "Bootstrap 5", "PyInstaller"],
+    featured: true,
+  },
+  {
+    id: 2,
     title: "Sistema de Generación de Números Aleatorios",
     description:
       "Sistema que automatiza la generación de números para sorteos televisivos (Chontico y Lotería del Valle), reduciendo el tiempo de preparación de 45 minutos a solo 5 minutos. Incluye panel administrativo, sistema de seguridad, gestión de permisos de acceso y autenticación JWT.",
@@ -15,7 +33,7 @@ const projects = [
     featured: true,
   },
   {
-    id: 2,
+    id: 3,
     title: "Sistema de Paz y Salvo - Portal PAU",
     description:
       "Sistema para validación de paz y salvo de empleados que finalizan su relación laboral en Gane SuperGiros. Implementa autenticación JWT y sistema de notificaciones por email. Desarrollado en 3 meses con resultados eficientes y robustos.",
@@ -24,7 +42,7 @@ const projects = [
     featured: true,
   },
   {
-    id: 3,
+    id: 4,
     title: "Actualización de Datos de Empleados",
     description:
       "Módulo para la plataforma Portal PAU de Gane SuperGiros que permite reescribir y gestionar datos de empleados. Incluye sistema de auditoría, administración de accesos, generación de reportes Excel, paginación y autenticación JWT. Optimizado para alta concurrencia de peticiones en tiempo real.",
@@ -33,7 +51,7 @@ const projects = [
     featured: true,
   },
   {
-    id: 6,
+    id: 5,
     title: "Radicación de Incapacidades Laborales",
     description:
       "Aplicación web para digitalizar y agilizar el proceso de radicación de incapacidades laborales, eliminando procesos manuales y en papel. Proyecto de grado para Talento Tech.",
@@ -42,7 +60,7 @@ const projects = [
     featured: false,
   },
   {
-    id: 4,
+    id: 6,
     title: "SIPAC - Módulo de Movilidades Académicas",
     description:
       "Módulo para el sistema SIPAC de la Universidad Santiago de Cali que automatiza la gestión de movilidades entrantes y salientes de profesores y estudiantes para intercambios académicos.",
@@ -51,14 +69,13 @@ const projects = [
     featured: false,
   },
   {
-    id: 5,
+    id: 7,
     title: "Sistema de Gestión de Inventario - Biblioteca",
     description:
       "Sistema de optimización de inventario para la biblioteca de la Universidad Santiago de Cali, mejorando el seguimiento y control de recursos bibliográficos.",
     technologies: ["Laravel", "Node.js", "MySQL", "Oracle SQL"],
-    demo: null,
     featured: false,
-  },
+  }
   
 ]
 

@@ -4,6 +4,15 @@ import { Badge } from "@/components/ui/badge"
 
 const experience = [
   {
+    title: "Ingeniero de software",
+    company: "Independiente - CordiaSolve",
+    period: "Mar 2026 - Ago 2026",
+    location: "Cali, Valle del Cauca · Híbrido",
+    description:
+      "Producto independiente desarrollado bajo mi marca CordiaSolve: software integral de gestión para talleres de motocicletas con órdenes de servicio, inventario de repuestos, vehículos y clientes, facturación, finanzas con cierre mensual, reportes y auditoría completa. Autenticación con sesiones y bcrypt, acceso multi-PC en red local y distribución como ejecutable de escritorio.",
+    technologies: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "Jinja2"],
+  },
+  {
     title: "Aprendiz TI (Full Stack Developer + DevOps)",
     company: "Gane SuperGiros · Temporal",
     period: "Abr 2025 - Oct 2025",

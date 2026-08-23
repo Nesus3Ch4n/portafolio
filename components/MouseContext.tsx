@@ -1,144 +1,131 @@
 "use client"
 
-import { createContext, useContext, useRef, useEffect, useState, ReactNode } from "react"
+import { createContext, useContext, useRef, useEffect, useMemo, ReactNode } from "react"
 
-interface MousePosition {
-  x: number
-  y: number
-  normalizedX: number
-  normalizedY: number
-  isHovering: boolean
+interface GlowOptions {
+  intensity?: number
 }
 
-interface MouseContextType {
-  mousePosition: MousePosition
-  registerGlowElement: (element: HTMLElement | null) => void
+interface GlowEntry {
+  intensity: number
+  tx: number
+  ty: number
 }
 
-const MouseContext = createContext<MouseContextType | undefined>(undefined)
+interface MouseGlowRegistry {
+  registerGlowElement: (element: HTMLElement, options?: GlowOptions) => () => void
+}
+
+const MouseContext = createContext<MouseGlowRegistry | undefined>(undefined)
+
+const IDLE_OPACITY = 0.2
 
 export function MouseProvider({ children }: { children: ReactNode }) {
-  const [mousePosition, setMousePosition] = useState<MousePosition>({
-    x: 0,
-    y: 0,
-    normalizedX: 0,
-    normalizedY: 0,
-    isHovering: false
-  })
-  
   const glowElementsRef = useRef<Set<HTMLElement>>(new Set())
-  const animationRef = useRef<number>()
-  const containerRef = useRef<HTMLDivElement | null>(null)
+  const glowEntriesRef = useRef<WeakMap<HTMLElement, GlowEntry>>(new WeakMap())
 
-  const registerGlowElement = (element: HTMLElement | null) => {
-    if (element) {
-      glowElementsRef.current.add(element)
+  const registerGlowElement = (element: HTMLElement, options?: GlowOptions) => {
+    glowElementsRef.current.add(element)
+    glowEntriesRef.current.set(element, {
+      intensity: options?.intensity ?? 1,
+      tx: 0,
+      ty: 0,
+    })
+    return () => {
+      glowElementsRef.current.delete(element)
+      glowEntriesRef.current.delete(element)
     }
   }
 
   useEffect(() => {
-    // Crear un contenedor invisible que cubra toda la pantalla
-    const container = document.createElement('div')
-    container.style.position = 'fixed'
-    container.style.top = '0'
-    container.style.left = '0'
-    container.style.width = '100%'
-    container.style.height = '100%'
-    container.style.pointerEvents = 'none'
-    container.style.zIndex = '9999'
-    containerRef.current = container
-    document.body.appendChild(container)
+    const position = { x: 0, y: 0, hovering: false }
+    let rafId = 0
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Posición absoluta del mouse
-      const x = e.clientX
-      const y = e.clientY
-      
-      // Posición normalizada para efectos (valores entre -1 y 1)
-      const normalizedX = (x / window.innerWidth) * 2 - 1
-      const normalizedY = (y / window.innerHeight) * 2 - 1
-      
-      setMousePosition({
-        x,
-        y,
-        normalizedX,
-        normalizedY,
-        isHovering: true
-      })
+      position.x = e.clientX
+      position.y = e.clientY
+      position.hovering = true
     }
 
     const handleMouseLeave = () => {
-      setMousePosition(prev => ({
-        ...prev,
-        isHovering: false
-      }))
+      position.hovering = false
     }
 
-    document.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseleave', handleMouseLeave)
+    document.addEventListener("mousemove", handleMouseMove)
+    document.addEventListener("mouseleave", handleMouseLeave)
+
+    // Fase 1: lecturas de layout agrupadas. Fase 2: escrituras agrupadas.
+    const updateGlowPositions = () => {
+      const elements = Array.from(glowElementsRef.current)
+      const measurements = elements.map((element) => ({
+        element,
+        rect: element.getBoundingClientRect(),
+      }))
+
+      const maxDistance =
+        Math.max(window.innerWidth, window.innerHeight) * 0.3
+
+      for (const { element, rect } of measurements) {
+        const entry = glowEntriesRef.current.get(element)
+        if (!entry || rect.width === 0 || rect.height === 0) continue
+
+        // Centro base sin contar el translate ya aplicado
+        const baseCenterX = rect.left + rect.width / 2 - entry.tx
+        const baseCenterY = rect.top + rect.height / 2 - entry.ty
+
+        if (position.hovering) {
+          const distanceX = position.x - baseCenterX
+          const distanceY = position.y - baseCenterY
+
+          const targetTx = distanceX * 0.1
+          const targetTy = distanceY * 0.1
+
+          const distance = Math.sqrt(
+            distanceX * distanceX + distanceY * distanceY
+          )
+          const targetOpacity = Math.max(
+            0.3,
+            1 - Math.min(distance / maxDistance, 0.7)
+          )
+
+          entry.tx += (targetTx - entry.tx) * 0.15
+          entry.ty += (targetTy - entry.ty) * 0.15
+          element.style.transform = `translate(${entry.tx}px, ${entry.ty}px)`
+          element.style.opacity = (
+            targetOpacity * entry.intensity
+          ).toString()
+        } else {
+          // Regreso suave a la posicion base y opacidad idle
+          entry.tx += (0 - entry.tx) * 0.15
+          entry.ty += (0 - entry.ty) * 0.15
+          element.style.transform = `translate(${entry.tx}px, ${entry.ty}px)`
+          element.style.opacity = IDLE_OPACITY.toString()
+        }
+      }
+
+      rafId = requestAnimationFrame(updateGlowPositions)
+    }
+
+    rafId = requestAnimationFrame(updateGlowPositions)
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseleave', handleMouseLeave)
-      if (containerRef.current) {
-        document.body.removeChild(containerRef.current)
-      }
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-      }
+      cancelAnimationFrame(rafId)
+      document.removeEventListener("mousemove", handleMouseMove)
+      document.removeEventListener("mouseleave", handleMouseLeave)
     }
   }, [])
 
-  // Actualizar posición de los elementos glow
-  useEffect(() => {
-    if (!mousePosition.isHovering) return
-
-    const updateGlowPositions = () => {
-      glowElementsRef.current.forEach((element) => {
-        const rect = element.getBoundingClientRect()
-        const elementCenterX = rect.left + rect.width / 2
-        const elementCenterY = rect.top + rect.height / 2
-        
-        // Calcular distancia del mouse al centro del elemento
-        const distanceX = mousePosition.x - elementCenterX
-        const distanceY = mousePosition.y - elementCenterY
-        
-        // Aplicar transformación basada en la distancia
-        const moveX = distanceX * 0.1 // Intensidad del movimiento
-        const moveY = distanceY * 0.1
-        
-        // Calcular opacidad basada en la distancia
-        const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY)
-        const maxDistance = Math.max(window.innerWidth, window.innerHeight) * 0.3
-        const opacity = Math.max(0.3, 1 - Math.min(distance / maxDistance, 0.7))
-        
-        element.style.transform = `translate(${moveX}px, ${moveY}px)`
-        element.style.opacity = opacity.toString()
-      })
-      
-      animationRef.current = requestAnimationFrame(updateGlowPositions)
-    }
-
-    animationRef.current = requestAnimationFrame(updateGlowPositions)
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-      }
-    }
-  }, [mousePosition])
+  const value = useMemo(() => ({ registerGlowElement }), [])
 
   return (
-    <MouseContext.Provider value={{ mousePosition, registerGlowElement }}>
-      {children}
-    </MouseContext.Provider>
+    <MouseContext.Provider value={value}>{children}</MouseContext.Provider>
   )
 }
 
 export function useMouse() {
   const context = useContext(MouseContext)
   if (context === undefined) {
-    throw new Error('useMouse debe ser usado dentro de MouseProvider')
+    throw new Error("useMouse debe ser usado dentro de MouseProvider")
   }
   return context
 }
