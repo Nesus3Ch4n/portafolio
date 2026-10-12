@@ -4,13 +4,46 @@ import { Badge } from "@/components/ui/badge"
 
 const experience = [
   {
-    title: "Ingeniero de software",
-    company: "Independiente - CordiaSolve",
-    period: "Mar 2026 - Ago 2026",
+    title: "Desarrollador Full Stack — Barena (ServeTrack)",
+    company: "Proyecto Personal",
+    period: "Sep 2026 - Actualidad",
+    location: "Cali, Valle del Cauca · Remoto",
+    description:
+      "Plataforma SaaS freemium para gestión integral de torneos de voleibol playa: atletas, equipos, torneos, fixtures automáticos, resultados en tiempo real, estadísticas avanzadas (ATK/BLK/ACE), rankings y modo espectador público.",
+    achievements: [
+      "**Backend Python/FastAPI**: fixtures automáticos, brackets eliminatorios y sistema de puntos con 13 migraciones versionadas con Alembic, SQLAlchemy 2, Pydantic v2, JWT y RLS en Supabase PostgreSQL.",
+      "**Frontend Next.js**: interfaz con Next.js 14, React, TypeScript, Tailwind CSS y shadcn/ui, con rankings en vivo y modo espectador público en tiempo real.",
+      "**Arquitectura modular**: backend por dominios (torneos, rankings, partidos, equipos, atletas, estadísticas) aplicando SOLID, con documentación de arquitectura, base de datos y modelo freemium.",
+    ],
+    technologies: ["Python", "FastAPI", "SQLAlchemy 2", "Alembic", "Pydantic v2", "JWT", "Supabase", "PostgreSQL", "Next.js 14", "React", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+  },
+  {
+    title: "Desarrollador Full Stack — Sistema Gestión Taller de Motos",
+    company: "Freelance - CordiaSolve",
+    period: "Jun 2026 - Jul 2026",
     location: "Cali, Valle del Cauca · Híbrido",
     description:
-      "Producto independiente desarrollado bajo mi marca CordiaSolve: software integral de gestión para talleres de motocicletas con órdenes de servicio, inventario de repuestos, vehículos y clientes, facturación, finanzas con cierre mensual, reportes y auditoría completa. Autenticación con sesiones y bcrypt, acceso multi-PC en red local y distribución como ejecutable de escritorio.",
-    technologies: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "Jinja2"],
+      "Aplicación web de escritorio para gestión integral de taller de motocicletas: órdenes de trabajo, inventario, vehículos, proveedores, finanzas, caja, reportes y facturación con impresión térmica directa. Freelance puntual en paralelo a proyecto personal.",
+    achievements: [
+      "**Backend Python/FastAPI**: API REST con FastAPI, Jinja2 (SSR) y SQLite, con emisión de tickets y facturas vía impresión térmica directa con win32print.",
+      "**Carga masiva con OCR**: digitalización de catálogos desde imágenes, reduciendo la carga manual de inventario.",
+      "**Distribución**: empaquetado con PyInstaller como .exe standalone sin dependencias de Python.",
+    ],
+    technologies: ["Python", "FastAPI", "SQLite", "Jinja2", "PyInstaller", "win32print", "OCR"],
+  },
+  {
+    title: "Desarrollador Full Stack — TuMismo (QuestLife)",
+    company: "Proyecto Personal",
+    period: "Oct 2025 - Sep 2026",
+    location: "Cali, Valle del Cauca · Remoto",
+    description:
+      "Plataforma SaaS de autogestión personal gamificada: objetivos, hábitos y tareas con XP, niveles, oro, rachas, leaderboard y tienda. Solapa en septiembre con Barena por transición.",
+    achievements: [
+      "**Backend Python/FastAPI**: sistema de recompensas con reglas de negocio encapsuladas, JWT en Supabase PostgreSQL y cron de recordatorios.",
+      "**Frontend Next.js**: UI con Next.js, React 19, TypeScript, Tailwind v4, shadcn/ui y SWR, con notificaciones in-app idempotentes e integración vía webhooks de Discord.",
+      "**CI/CD y observabilidad**: pipelines (lint, typecheck, build, Ruff), protección de ramas y monitoreo con Sentry en Vercel.",
+    ],
+    technologies: ["Python", "FastAPI", "Supabase", "PostgreSQL", "JWT", "Next.js", "React 19", "TypeScript", "Tailwind CSS", "shadcn/ui", "SWR", "Vercel", "Sentry"],
   },
   {
     title: "Aprendiz TI (Full Stack Developer + DevOps)",

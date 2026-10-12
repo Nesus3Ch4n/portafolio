@@ -19,8 +19,8 @@ const projects: Project[] = [
     id: 1,
     title: "Sistema de Gestión para Taller de Motos",
     description:
-      "Producto independiente desarrollado bajo mi marca CordiaSolve: software integral de gestión para talleres de motocicletas con órdenes de servicio, inventario de repuestos, vehículos y clientes, facturación, finanzas con cierre mensual, reportes y auditoría completa. Autenticación con sesiones y bcrypt, acceso multi-PC en red local y distribución como ejecutable de escritorio.",
-    technologies: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "Jinja2", "Bootstrap 5", "PyInstaller"],
+      "Freelance (Jun-Jul 2026) bajo mi marca CordiaSolve: gestión integral de taller con órdenes de trabajo, inventario, vehículos, proveedores, finanzas, caja y facturación con impresión térmica directa vía win32print. Carga masiva de inventario con OCR y distribución como .exe standalone con PyInstaller.",
+    technologies: ["Python", "FastAPI", "SQLite", "Jinja2", "HTML", "CSS", "JavaScript", "PyInstaller", "win32print", "OCR"],
     featured: true,
   },
   {
@@ -48,6 +48,24 @@ const projects: Project[] = [
       "Módulo para la plataforma Portal PAU de Gane SuperGiros que permite reescribir y gestionar datos de empleados. Incluye sistema de auditoría, administración de accesos, generación de reportes Excel, paginación y autenticación JWT. Optimizado para alta concurrencia de peticiones en tiempo real.",
     technologies: ["Angular", "TypeScript", "FastAPI", "Python", "Oracle DB", "Docker", "JWT"],
     github: "https://github.com/Nesus3Ch4n/actualizacion-datos-frontend",
+    featured: true,
+  },
+  {
+    id: 8,
+    title: "Barena (ServeTrack) — SaaS de torneos de voleibol playa",
+    description:
+      "Proyecto personal (Sep 2026 - Actualidad): SaaS freemium con atletas, equipos, torneos, fixtures automáticos, resultados en tiempo real, estadísticas ATK/BLK/ACE, rankings y modo espectador. Backend modular por dominios con 13 migraciones Alembic y RLS en Supabase.",
+    technologies: ["Python", "FastAPI", "SQLAlchemy 2", "Alembic", "Pydantic v2", "JWT", "Supabase", "PostgreSQL", "Next.js 14", "React", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+    demo: "https://barena-bat.vercel.app",
+    featured: true,
+  },
+  {
+    id: 9,
+    title: "TuMismo (QuestLife) — SaaS de autogestión gamificada",
+    description:
+      "Proyecto personal (Oct 2025 - Sep 2026): objetivos, hábitos y tareas con XP, niveles, oro, rachas, leaderboard y tienda. Notificaciones in-app idempotentes, webhooks de Discord, CI/CD y observabilidad con Sentry en Vercel.",
+    technologies: ["Python", "FastAPI", "Supabase", "PostgreSQL", "JWT", "Next.js", "React 19", "TypeScript", "Tailwind CSS", "shadcn/ui", "SWR", "Vercel", "Sentry"],
+    demo: "https://tumismo.vercel.app",
     featured: true,
   },
   {
